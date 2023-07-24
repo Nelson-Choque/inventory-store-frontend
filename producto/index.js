@@ -73,7 +73,7 @@ const deleteProduct = async () => {
 
       //se crea el enlace para hacer refresh de la pagina
       const enlace = document.createElement("a");
-      enlace.href = `/`;
+      enlace.href = `/producto/`;
       enlace.click();
       break;
     }
