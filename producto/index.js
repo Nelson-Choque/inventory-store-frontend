@@ -55,7 +55,22 @@ const deleteProduct = async () => {
     if (checkbox.checked) {
       const idRow = tbodyArray[index].querySelectorAll("td")[1].textContent;
 
-      console.log(idRow);
+      //
+
+      let isSure = await Swal.fire({
+        title: "¿Estás seguro?",
+        text: "Esta acción eliminará el producto de forma permanente",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar",
+        reverseButtons: true,
+      });
+      //
+
+      if (!isSure.isConfirmed) {
+        break;
+      }
 
       const data = await fetch("http://localhost:8090/producto/" + idRow, {
         method: "DELETE",

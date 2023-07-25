@@ -1,5 +1,5 @@
 const getProducts = async () => {
-  const response = await fetch("http://localhost:8090/almacen/");
+  const response = await fetch("http://localhost:8090/usuario/");
 
   data = await response.json();
 
@@ -28,12 +28,13 @@ const moveEditPage = () => {
       const dataRow = {
         id: row[1].textContent,
         nombre: row[2].textContent,
-        direccion: row[3].textContent,
+        descripcion: row[3].textContent,
+        precio: row[4].textContent,
       };
 
       //enviar los datos a traver de query params
       const enlace = document.createElement("a");
-      enlace.href = `/almacen/editar.html?id=${dataRow.id}&nombre=${dataRow.nombre}&direccion=${dataRow.direccion}`;
+      enlace.href = `/producto/editar.html?id=${dataRow.id}&nombre=${dataRow.nombre}&descripcion=${dataRow.descripcion}&precio=${dataRow.precio}`;
 
       enlace.click();
 
@@ -54,22 +55,9 @@ const deleteProduct = async () => {
     if (checkbox.checked) {
       const idRow = tbodyArray[index].querySelectorAll("td")[1].textContent;
 
-      let isSure = await Swal.fire({
-        title: "¿Estás seguro?",
-        text: "Esta acción eliminará el producto de forma permanente",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonText: "Sí, eliminar",
-        cancelButtonText: "Cancelar",
-        reverseButtons: true,
-      });
-      //
+      console.log(idRow);
 
-      if (!isSure.isConfirmed) {
-        break;
-      }
-
-      const data = await fetch("http://localhost:8090/almacen/" + idRow, {
+      const data = await fetch("http://localhost:8090/producto/" + idRow, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -85,7 +73,7 @@ const deleteProduct = async () => {
 
       //se crea el enlace para hacer refresh de la pagina
       const enlace = document.createElement("a");
-      enlace.href = `/almacen/`;
+      enlace.href = `/producto/`;
       enlace.click();
       break;
     }

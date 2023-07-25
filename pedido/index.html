@@ -11,7 +11,7 @@
 
 
 </head>
-<body >
+<body class="">
 
 
     <nav class="navbar bg-primary navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
@@ -34,6 +34,7 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/usuario/">usuario</a>
                   </li>
+    
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/cliente/">cliente</a>
                   </li>
@@ -48,12 +49,10 @@
           </div>
         </div>
       </nav>
-
-
-
       <div class="p-4">
-    <h2>Productos</h2>
-    <a href="/producto/agregar.html"><button type="button" class="btn btn-primary my-4">Agregar </button></a>
+
+    <h2>Pedidos</h2>
+    <a href="/almacen/agregar.html"><button type="button" class="btn btn-primary my-4">Agregar </button></a>
 
     <button type="button" class="btn btn-primary btn-secondary my-4" onclick="moveEditPage()">Editar </button>
     <button type="button" class="btn btn-primary btn-danger my-4" onclick="deleteProduct()">Eliminar </button>
@@ -63,10 +62,9 @@
         <thead>
             <tr>
                 <th>select</th>
-                <th>Codigo producto</th>
-                <th>nombre</th>
-                <th>descripcion</th>
-                <th>precio</th>
+                <th>cod pedido</th>
+                <th>fecha pedido</th>
+                <th>cod cliente</th>
              
             </tr>
             

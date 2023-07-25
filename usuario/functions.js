@@ -2,18 +2,20 @@
 
 const getDataForm = () => {
   const frmNombre = document.getElementById("frm-nombre").value;
-  const frmDireccion = document.getElementById("frm-direccion").value;
+  const frmDescripcion = document.getElementById("frm-descripcion").value;
+  const frmPrecio = document.getElementById("frm-precio").value;
 
   return {
     nombre: frmNombre,
-    direccion: frmDireccion,
+    descripcion: frmDescripcion,
+    precio: frmPrecio,
   };
 };
 
 // -----------------------------create producto----------------------
 
 const postProducto = async (dataForm) => {
-  const data = await fetch("http://localhost:8090/almacen/", {
+  const data = await fetch("http://localhost:8090/producto/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -29,7 +31,7 @@ const postProducto = async (dataForm) => {
   console.log("todo guchi");
 
   const enlace = document.createElement("a");
-  enlace.href = `/almacen/`;
+  enlace.href = `/producto/`;
 
   enlace.click();
 };
@@ -43,7 +45,7 @@ const createProduct = () => {
 // -----------------------------edit producto----------------------
 
 const putProduct = async (dataForm, id) => {
-  const data = await fetch("http://localhost:8090/almacen/" + id, {
+  const data = await fetch("http://localhost:8090/producto/" + id, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -58,7 +60,7 @@ const putProduct = async (dataForm, id) => {
 
   console.log("todo guchi");
   const enlace = document.createElement("a");
-  enlace.href = `/almacen/`;
+  enlace.href = `/producto/`;
 
   enlace.click();
 };
@@ -86,11 +88,13 @@ const main = () => {
   const data = {
     id: params.get("id"),
     nombre: params.get("nombre"),
-    direccion: params.get("direccion"),
+    descripcion: params.get("descripcion"),
+    precio: params.get("precio"),
   };
 
   document.getElementById("frm-nombre").value = data.nombre;
-  document.getElementById("frm-direccion").value = data.direccion;
+  document.getElementById("frm-descripcion").value = data.descripcion;
+  document.getElementById("frm-precio").value = data.precio;
 };
 
 main();

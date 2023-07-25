@@ -1,9 +1,10 @@
 const getProducts = async () => {
-  const response = await fetch("http://localhost:8090/almacen/");
+  const response = await fetch("http://localhost:8090/pedido/");
 
   data = await response.json();
-
-  const dataArray = data.map((obj) => Object.values(obj));
+  const dataArray = data.map((obj) => {
+    return Object.values(obj);
+  });
 
   const elementCheckBox = '<input type="checkbox" name="frmCheckbox" id="">';
   dataArray.forEach((element) => {

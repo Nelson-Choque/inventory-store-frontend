@@ -1,9 +1,17 @@
 const getProducts = async () => {
-  const response = await fetch("http://localhost:8090/almacen/");
+  const response = await fetch("http://localhost:8090/cliente/");
 
   data = await response.json();
+  console.log(data[0].estado.data);
+  const dataArray = data.map((obj) => {
+    obj.estado = obj.estado.data[0];
 
-  const dataArray = data.map((obj) => Object.values(obj));
+    if (!obj.estado) {
+      obj.estado = "inactivo";
+    }
+    obj.estado = "activo";
+    return Object.values(obj);
+  });
 
   const elementCheckBox = '<input type="checkbox" name="frmCheckbox" id="">';
   dataArray.forEach((element) => {
